@@ -53,6 +53,8 @@ input {
 input[type='text'],
 input[type='number'] {
     cursor: text;
+    border-radius: 10px;
+    padding: 5px;
 }
 
 .nav-bar{
@@ -72,8 +74,64 @@ input[type='number'] {
 .btn:hover {
     filter: brightness(90%);
 }
+.grid-books{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-xl);
+}
+#addBook{
+    text-align: center;
+    gap: 10px;
+    background: var(--grey);
+    position: fixed;
+    border-radius: 5px;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    padding: 10px;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 2;
+}
+#addBook.active{
+    transform: translate(-50%, -50%) scale(1);
+}
+#addBook > form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    gap: 12px;
+}
+#addBook > div{
+    text-align: center;
+}
+#addBook > div > span{
+    position: absolute;
+    margin: 13px;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+#addBookBtn{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background: var(--light-green);
+    padding: 6px;
+    border-radius: 10px;
+}
+#overlay{
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+#overlay.active{
+    opacity: 1;
+    pointer-events: all;
 
-.btn-add {
-    font-size: 24px;
-    font-weight: 600;
 }
