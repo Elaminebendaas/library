@@ -77,6 +77,7 @@ input[type='number'] {
 .grid-books{
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(300px, 1fr));
+    padding: 80px;
     gap: var(--spacing-xl);
     margin-top: var(--spacing-xl);
 }
@@ -133,5 +134,21 @@ input[type='number'] {
 #overlay.active{
     opacity: 1;
     pointer-events: all;
-
+}
+.book-details{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 20px;
+    gap: 20px;
+    background: white;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.16);
+    border-radius: var(--border-radius);
+}
+.read{
+    background-color:#9fff9c;
+}
+.notread{
+    background-color: var(--light-red);
 }

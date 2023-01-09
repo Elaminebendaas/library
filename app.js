@@ -7,10 +7,6 @@ function Book(title, author, pages, read) {
     this.read = read
 }
 
-function addBookToLibrary() {
-    // do stuff here
-}
-
 Book.prototype.Output = function() {
     console.log(this.title)
     console.log(this.author)
@@ -23,15 +19,77 @@ let titleForm = document.getElementById('title')
 let authorForm = document.getElementById('author')
 let pagesForm = document.getElementById('pages')
 let readForm = document.getElementById('read')
+let mainGrid = document.getElementById('bookgrid')
 addBookBtn.addEventListener('click', newBook)
 
 function newBook() {
-    console.log(title)
     const book = new Book(title.value, author.value, pages.value, read.checked)
     event.preventDefault()
     book.Output()
     closeModal()
+    myLibrary.push(book)
+    addBookToGrid(book)
 }
+
+
+//This creates the container for the book
+function addBookToGrid(book){
+    bookDiv = document.createElement('div')
+    bookDiv.classList.add('book-details')
+    titleP = document.createElement('p')
+    titleP.innerHTML = book.title
+    bookDiv.append(titleP)
+    authorP = document.createElement('p')
+    authorP.innerHTML = book.author
+    bookDiv.append(authorP)
+    pagesP = document.createElement('p')
+    pagesP.innerHTML = book.pages + " pages"
+    bookDiv.append(pagesP)
+    readBtn = document.createElement('button')
+    readBtn.classList.add('btn')
+    if(book.read == true){
+        readBtn.classList.add('read')
+        readBtn.innerHTML = 'Read'
+    }else{
+        readBtn.classList.add('notread')
+        readBtn.innerHTML = 'Not Read'
+    }
+    bookDiv.append(readBtn)
+    removeBtn = document.createElement('button')
+    removeBtn.classList.add('btn')
+    removeBtn.innerHTML = 'Remove'
+    bookDiv.append(removeBtn)
+    mainGrid.append(bookDiv)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -53,4 +111,5 @@ function openModal() {
 function closeModal() {
     modal.classList.remove('active')
     overlay.classList.remove('active')
+    
 }
