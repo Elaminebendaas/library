@@ -23,6 +23,15 @@ let mainGrid = document.getElementById('bookgrid')
 let readBtn = document.querySelectorAll('.readbtn')
 addBookBtn.addEventListener('click', newBook)
 
+
+readBtn.forEach(button => {
+    button.addEventListener('click', changeStatus = () =>{
+        button.classList.replace('notread', 'read')
+    })    
+});
+
+
+
 function newBook() {
     const book = new Book(title.value, author.value, pages.value, read.checked)
     event.preventDefault()
