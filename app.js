@@ -7,13 +7,6 @@ function Book(title, author, pages, read) {
     this.read = read
 }
 
-Book.prototype.Output = function() {
-    console.log(this.title)
-    console.log(this.author)
-    console.log(this.pages)
-    console.log(this.read)
-}
-
 let addBookBtn = document.getElementById('addBookBtn')
 let titleForm = document.getElementById('title')
 let authorForm = document.getElementById('author')
@@ -36,12 +29,9 @@ mainGrid.addEventListener('click', (e) => {
         myLibrary[bookIndex] = null
         e.target.parentElement.remove()
     }
-
-   
 })
 
-
-
+//The function below is triggered when book form is completed and creates a Book object
 function newBook() {
     const book = new Book(title.value, author.value, pages.value, read.checked)
     event.preventDefault()
@@ -86,9 +76,6 @@ function addBookToGrid(book){
 }
 
 
-
-
-
 //Opening an closing modal
 let modal = document.getElementById('addBook')
 let openBtn = document.getElementById('openBtn')
@@ -104,6 +91,5 @@ function openModal() {
 }
 function closeModal() {
     modal.classList.remove('active')
-    overlay.classList.remove('active')
-    
+    overlay.classList.remove('active') 
 }
