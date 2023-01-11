@@ -20,15 +20,23 @@ let authorForm = document.getElementById('author')
 let pagesForm = document.getElementById('pages')
 let readForm = document.getElementById('read')
 let mainGrid = document.getElementById('bookgrid')
-let readBtn = document.querySelectorAll('.readbtn')
+let readBtn = document.querySelector('.readbtn')
 addBookBtn.addEventListener('click', newBook)
 
+mainGrid.addEventListener('click', (e) => {
+    bookIndex = e.target.parentElement.dataset.index
 
-readBtn.forEach(button => {
-    button.addEventListener('click', changeStatus = () =>{
-        button.classList.replace('notread', 'read')
-    })    
-});
+    if(e.target.classList.contains('notread')){
+        e.target.classList.replace('notread', 'read')
+    }else if(e.target.classList.contains('read')){
+        e.target.classList.replace('read', 'notread')
+    }else if(e.target.classList.contains('removeBtn')){
+        myLibrary.splice(bookIndex)
+        e.target.parentElement.remove()
+    }
+
+   
+})
 
 
 
@@ -74,38 +82,6 @@ function addBookToGrid(book){
     bookDiv.append(removeBtn)
     mainGrid.append(bookDiv)
 }
-
-
-
-
-function changeStatus(i){
-    
-    i.classList.replace('notread','read')
-    console.log('hello')
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
