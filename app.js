@@ -25,13 +25,15 @@ addBookBtn.addEventListener('click', newBook)
 
 mainGrid.addEventListener('click', (e) => {
     bookIndex = e.target.parentElement.dataset.index
-
+    let book = myLibrary[bookIndex]
     if(e.target.classList.contains('notread')){
         e.target.classList.replace('notread', 'read')
+        book.read = true
     }else if(e.target.classList.contains('read')){
         e.target.classList.replace('read', 'notread')
+        book.read = false
     }else if(e.target.classList.contains('removeBtn')){
-        myLibrary.splice(bookIndex)
+        myLibrary[bookIndex] = null
         e.target.parentElement.remove()
     }
 
