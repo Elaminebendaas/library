@@ -35,7 +35,6 @@ mainGrid.addEventListener('click', (e) => {
 function newBook() {
     const book = new Book(title.value, author.value, pages.value, read.checked)
     event.preventDefault()
-    book.Output()
     closeModal()
     myLibrary.push(book)
     addBookToGrid(book)
