@@ -1,16 +1,20 @@
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, read, pdf) {
     this.title = title
     this.author = author
     this.pages = pages
     this.read = read
+    this.pdf = pdf
 }
-
+Book.prototype.pdfOutput = function(){
+    console.log(this.pdf.name)
+}
 let addBookBtn = document.getElementById('addBookBtn')
 let titleForm = document.getElementById('title')
 let authorForm = document.getElementById('author')
 let pagesForm = document.getElementById('pages')
+let pdfForm = document.getElementById('pdfFile')
 let readForm = document.getElementById('read')
 let mainGrid = document.getElementById('bookgrid')
 let readBtn = document.querySelector('.readbtn')
@@ -33,11 +37,12 @@ mainGrid.addEventListener('click', (e) => {
 
 //The function below is triggered when book form is completed and creates a Book object
 function newBook() {
-    const book = new Book(title.value, author.value, pages.value, read.checked)
+    const book = new Book(title.value, author.value, pages.value, read.checked, pdfForm.files[0])
     event.preventDefault()
     closeModal()
     myLibrary.push(book)
     addBookToGrid(book)
+    book.pdfOutput(book)
 }
 
 
